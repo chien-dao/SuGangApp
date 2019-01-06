@@ -1,59 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   TextInput,
   StyleSheet,
   Image,
+  Button,
 } from 'react-native';
+import firebase from 'react-native-firebase';
+import styles from './styles';
 import BackgroundImg from '../../assets/images/background-authen.png';
 
-const SignUpScreen = () => (
-  <View style={styles.container}>
-    <Image
-      source={BackgroundImg}
-      style={styles.imgBackground}
-    />
-    <TextInput
-      style={styles.textInput}
-      placeholder="Username"
-    />
-    <TextInput
-      style={styles.textInput}
-      placeholder="Password"
-    />
-  </View>
-);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignContent: 'center',
-    position: 'relative'
-  },
-  textInput: {
-    marginLeft: 20,
-    marginRight: 20,
-    borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowRadius: 18,
-    elevation: 10,
-    backgroundColor: '#ffffff',
-  },
-  imgBackground: {
-    width: 420,
-    height: 420,
-    position: 'absolute',
-    top: '50%',
-    right: 0,
-    transform: [
-      { translateY: -210 },
-      { translateX: 210 }
-    ],
+export default class SignUpScreen extends Component {
+  state = {
+    email: '',
+    password: ''
   }
-});
 
-export default SignUpScreen;
+  handleSignUp = () => {
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => console.log(user))
+      .catch(err => console.log(err))
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={BackgroundImg}
+          style={styles.imgBackground}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Email"
+          onChangeText={input => this.setState({ email: input })}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Password"
+          onChangeText={input => this.setState({ password: input })}
+        />
+        <Button
+          title="Sign up"
+          onPress={this.handleSignUp}
+        />
+      </View>
+    )
+  }
+};

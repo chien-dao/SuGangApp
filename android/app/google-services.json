@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1071801795023",
+    "firebase_url": "https://sugangapp.firebaseio.com",
+    "project_id": "sugangapp",
+    "storage_bucket": "sugangapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071801795023:android:adf04aef41531129",
+        "android_client_info": {
+          "package_name": "com.sugangapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071801795023-m14uvhgdb1f0oufoeb0mpbpi2i7bvk4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDofrXz_X5da47RSFUQrl9rvT5wP5Z4hg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
